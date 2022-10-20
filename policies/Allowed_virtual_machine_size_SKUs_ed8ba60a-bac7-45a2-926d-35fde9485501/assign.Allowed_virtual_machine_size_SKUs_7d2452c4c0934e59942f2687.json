@@ -11,7 +11,8 @@
   "parameters": {
    "listOfAllowedSKUs": {
     "value": [
-     "basic_a0"
+     "basic_a0",
+     "basic_a1"
     ]
    }
   },
