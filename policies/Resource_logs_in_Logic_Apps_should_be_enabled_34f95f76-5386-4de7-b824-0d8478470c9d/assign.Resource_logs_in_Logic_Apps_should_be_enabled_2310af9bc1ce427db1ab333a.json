@@ -4,7 +4,7 @@
   "tier": "Free"
  },
  "properties": {
-  "displayName": "Resource logs in Logic Apps should be enabled",
+  "displayName": "hello nareshResource logs in Logic Apps should be enabled",
   "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/34f95f76-5386-4de7-b824-0d8478470c9d",
   "scope": "/subscriptions/1a47acd7-90c6-43f0-977b-c00bd9573f49",
   "notScopes": [],
