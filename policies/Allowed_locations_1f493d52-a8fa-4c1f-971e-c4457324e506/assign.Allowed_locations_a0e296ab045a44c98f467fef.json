@@ -11,7 +11,8 @@
   "parameters": {
    "listOfAllowedLocations": {
     "value": [
-     "asia"
+     "asia",
+     "east-us"
     ]
    }
   },
