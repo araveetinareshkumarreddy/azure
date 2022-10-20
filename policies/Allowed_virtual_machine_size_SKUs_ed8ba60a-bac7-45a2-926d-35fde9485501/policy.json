@@ -1,0 +1,47 @@
+{
+ "properties": {
+  "displayName": "Allowed virtual machine size SKUs",
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "description": "This policy enables you to specify a set of virtual machine size SKUs that your organization can deploy.",
+  "metadata": {
+   "category": "Compute",
+   "createdBy": "a0ec3bd5-ead1-4a84-8217-e03ca8c2f6cd",
+   "createdOn": "2022-10-20T19:14:17.7108942Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "listOfAllowedSKUs": {
+    "type": "Array",
+    "metadata": {
+     "displayName": "Allowed Size SKUs",
+     "description": "The list of size SKUs that can be specified for virtual machines.",
+     "strongType": "VMSKUs"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Compute/virtualMachines"
+     },
+     {
+      "not": {
+       "field": "Microsoft.Compute/virtualMachines/sku.name",
+       "in": "[parameters('listOfAllowedSKUs')]"
+      }
+     }
+    ]
+   },
+   "then": {
+    "effect": "Deny"
+   }
+  }
+ },
+ "id": "/subscriptions/1a47acd7-90c6-43f0-977b-c00bd9573f49/providers/Microsoft.Authorization/policyDefinitions/ed8ba60a-bac7-45a2-926d-35fde9485501",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "ed8ba60a-bac7-45a2-926d-35fde9485501"
+}
