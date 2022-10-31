@@ -12,7 +12,8 @@
    "listOfAllowedLocations": {
     "value": [
      "asia",
-     "east-us"
+     "east-us",
+     "east-naresh"
     ]
    }
   },
