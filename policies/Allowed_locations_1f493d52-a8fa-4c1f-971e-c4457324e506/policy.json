@@ -8,8 +8,15 @@
    "category": "General",
    "createdBy": "a0ec3bd5-ead1-4a84-8217-e03ca8c2f6cd",
    "createdOn": "2022-10-20T18:55:16.5561846Z",
-   "updatedBy": null,
-   "updatedOn": null
+   "updatedBy": "4bd3163c-741f-4188-adeb-004f39ec9467",
+   "updatedOn": "2022-10-20T19:09:42.8153906Z",
+   "gitHubPolicy": {
+    "digest": "cd7df16103c58570f721530e8dd097759bf14c4b",
+    "repoName": "araveetinareshkumarreddy/azure",
+    "commitSha": "20dec8a14d99f1c448db5e475ab5b33b3d7acfee",
+    "runUrl": "https://github.com/araveetinareshkumarreddy/azure/actions/runs/3292253620",
+    "filepath": "policies/Allowed_locations_1f493d52-a8fa-4c1f-971e-c4457324e506"
+   }
   },
   "parameters": {
    "listOfAllowedLocations": {
