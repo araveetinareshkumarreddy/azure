@@ -16,7 +16,8 @@
   "parameters": {
    "listOfAllowedLocations": {
     "value": [
-     "eastus"
+     "eastus",
+     "asia"
     ]
    }
   },
