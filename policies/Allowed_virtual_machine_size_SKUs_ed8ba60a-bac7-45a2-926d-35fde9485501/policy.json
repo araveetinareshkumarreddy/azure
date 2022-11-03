@@ -8,8 +8,15 @@
    "category": "Compute",
    "createdBy": "a0ec3bd5-ead1-4a84-8217-e03ca8c2f6cd",
    "createdOn": "2022-10-20T19:14:17.7108942Z",
-   "updatedBy": null,
-   "updatedOn": null
+   "updatedBy": "a5ccd7fe-297e-462e-a706-0bd474ea8079",
+   "updatedOn": "2022-10-20T19:28:41.5779237Z",
+   "gitHubPolicy": {
+    "digest": "c21e92c833c7bd7ee4f3d49e950d8d6a2ce78581",
+    "repoName": "araveetinareshkumarreddy/azure",
+    "commitSha": "31abf9ed5e557b92bb9bc8c08fc62737ea6f256a",
+    "runUrl": "https://github.com/araveetinareshkumarreddy/azure/actions/runs/3292365588",
+    "filepath": "policies/Allowed_virtual_machine_size_SKUs_ed8ba60a-bac7-45a2-926d-35fde9485501"
+   }
   },
   "parameters": {
    "listOfAllowedSKUs": {

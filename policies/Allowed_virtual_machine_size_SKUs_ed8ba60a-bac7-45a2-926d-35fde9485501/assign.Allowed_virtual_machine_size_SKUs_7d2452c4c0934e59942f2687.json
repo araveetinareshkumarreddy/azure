@@ -21,10 +21,17 @@
    "parameterScopes": {
     "listOfAllowedSKUs": "/subscriptions/1a47acd7-90c6-43f0-977b-c00bd9573f49"
    },
-   "createdBy": "a0ec3bd5-ead1-4a84-8217-e03ca8c2f6cd",
-   "createdOn": "2022-10-20T19:25:11.0452365Z",
+   "createdBy": "a5ccd7fe-297e-462e-a706-0bd474ea8079",
+   "createdOn": "2022-11-01T17:56:30.582552Z",
    "updatedBy": null,
-   "updatedOn": null
+   "updatedOn": null,
+   "gitHubPolicy": {
+    "digest": "7165bfa6529565ab550b9ed5ecc4348c6018bb4a",
+    "repoName": "araveetinareshkumarreddy/azure",
+    "commitSha": "01664992572be07a5b24aa423bc23148fc788204",
+    "runUrl": "https://github.com/araveetinareshkumarreddy/azure/actions/runs/3371645016",
+    "filepath": "policies/Allowed_virtual_machine_size_SKUs_ed8ba60a-bac7-45a2-926d-35fde9485501/assign.Allowed_virtual_machine_size_SKUs_7d2452c4c0934e59942f2687.json"
+   }
   },
   "enforcementMode": "Default"
  },

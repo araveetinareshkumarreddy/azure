@@ -1,0 +1,32 @@
+{
+ "sku": {
+  "name": "A0",
+  "tier": "Free"
+ },
+ "identity": {
+  "principalId": "3d8934e4-0e3a-4cc0-9d29-af81d71174dc",
+  "tenantId": "1cb8c4d2-40fc-48a2-8a78-89e6de8fea9a",
+  "type": "SystemAssigned"
+ },
+ "properties": {
+  "displayName": "NIST SP 800-53 Rev. 5",
+  "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/179d1daa-458f-4e47-8086-2a68d0d6c38f",
+  "scope": "/subscriptions/1a47acd7-90c6-43f0-977b-c00bd9573f49",
+  "notScopes": [],
+  "parameters": {},
+  "description": "",
+  "metadata": {
+   "assignedBy": "keerthi reddy",
+   "parameterScopes": {},
+   "createdBy": "a0ec3bd5-ead1-4a84-8217-e03ca8c2f6cd",
+   "createdOn": "2022-09-21T17:20:11.6143686Z",
+   "updatedBy": "a0ec3bd5-ead1-4a84-8217-e03ca8c2f6cd",
+   "updatedOn": "2022-09-22T08:32:50.1908386Z"
+  },
+  "enforcementMode": "Default"
+ },
+ "id": "/subscriptions/1a47acd7-90c6-43f0-977b-c00bd9573f49/providers/Microsoft.Authorization/policyAssignments/d3864e245e034491a141d41a",
+ "type": "Microsoft.Authorization/policyAssignments",
+ "name": "d3864e245e034491a141d41a",
+ "location": "eastus"
+}
