@@ -1,0 +1,90 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspace": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/5bebc76d-542a-467d-b845-a296f6bc146a')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/5bebc76d-542a-467d-b845-a296f6bc146a')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2022-09-01-preview",
+            "properties": {
+                "displayName": "Shadowcopy deletion ",
+                "description": "",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "( union isfuzzy=true\r\n(SecurityEvent\r\n| where EventID==4688\r\n| extend FileName = Process, ProcessCommandLine = CommandLine\r\n| where FileName =~ \"vssadmin.exe\" and ProcessCommandLine has \"delete shadows\"\r\nor ProcessCommandLine has(\"bcdedit\") and ProcessCommandLine has_any(\"recoveryenabled no\", \"bootstatuspolicy ignoreallfailures\")\r\nor (ProcessCommandLine has \"wmic\" and ProcessCommandLine has \"shadowcopy delete\")\r\nor ProcessCommandLine has \"wbadmin\" and ProcessCommandLine has \"delete\" and ProcessCommandLine has_any(\"backup\", \"catalog\", \"systemstatebackup\")\r\n| extend timestamp = TimeGenerated, AccountCustomEntity = Account, HostCustomEntity = Computer, ProcessCustomEntity = NewProcessName\r\n),\r\n(WindowsEvent\r\n| where EventID == 4688\r\n| extend ProcessCommandLine = tostring(EventData.CommandLine)\r\n| where EventData has \"vssadmin.exe\" and ProcessCommandLine has \"delete shadows\"\r\nor ProcessCommandLine has(\"bcdedit\") and ProcessCommandLine has_any(\"recoveryenabled no\", \"bootstatuspolicy ignoreallfailures\")\r\nor (ProcessCommandLine has \"wmic\" and ProcessCommandLine has \"shadowcopy delete\")\r\nor ProcessCommandLine has \"wbadmin\" and ProcessCommandLine has \"delete\" and ProcessCommandLine has_any(\"backup\", \"catalog\", \"systemstatebackup\")\r\n| extend Account = strcat(EventData.TargetDomainName,\"\\\\\", EventData.TargetUserName)\r\n| extend timestamp = TimeGenerated, HostCustomEntity = Computer, AccountCustomEntity = Account\r\n),\r\n(DeviceProcessEvents\r\n| where FileName =~ \"vssadmin.exe\" and ProcessCommandLine has \"delete shadows\"\r\nor ProcessCommandLine has(\"bcdedit\") and ProcessCommandLine has_any(\"recoveryenabled no\", \"bootstatuspolicy ignoreallfailures\")\r\nor (ProcessCommandLine has \"wmic\" and ProcessCommandLine has \"shadowcopy delete\")\r\nor ProcessCommandLine has \"wbadmin\" and ProcessCommandLine has \"delete\" and ProcessCommandLine has_any(\"backup\", \"catalog\", \"systemstatebackup\")\r\n| extend timestamp = TimeGenerated, AccountCustomEntity = AccountName, HostCustomEntity = DeviceName, ProcessCustomEntity = InitiatingProcessFileName\r\n),\r\n(imProcessCreate\r\n| extend FileName = Process, ProcessCommandLine = CommandLine\r\n| where FileName =~ \"vssadmin.exe\" and ProcessCommandLine has \"delete shadows\"\r\nor ProcessCommandLine has(\"bcdedit\") and ProcessCommandLine has_any(\"recoveryenabled no\", \"bootstatuspolicy ignoreallfailures\")\r\nor (ProcessCommandLine has \"wmic\" and ProcessCommandLine has \"shadowcopy delete\")\r\nor ProcessCommandLine has \"wbadmin\" and ProcessCommandLine has \"delete\" and ProcessCommandLine has_any(\"backup\", \"catalog\", \"systemstatebackup\")\r\n| extend timestamp = TimeGenerated, AccountCustomEntity = AccountName, HostCustomEntity = Dvc, ProcessCustomEntity = Process\r\n)\r\n)",
+                "queryFrequency": "PT5H",
+                "queryPeriod": "P5D",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [],
+                "techniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": true,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": [
+                    {
+                        "entityType": "Account",
+                        "fieldMappings": [
+                            {
+                                "identifier": "FullName",
+                                "columnName": "AccountCustomEntity"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "Host",
+                        "fieldMappings": [
+                            {
+                                "identifier": "FullName",
+                                "columnName": "HostCustomEntity"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "File",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Name",
+                                "columnName": "FileName"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "Process",
+                        "fieldMappings": [
+                            {
+                                "identifier": "CommandLine",
+                                "columnName": "CommandLine"
+                            }
+                        ]
+                    }
+                ],
+                "sentinelEntitiesMappings": null
+            }
+        }
+    ]
+}
